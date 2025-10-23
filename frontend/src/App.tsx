@@ -69,8 +69,8 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>🚀 Deployment Test App</h1>
-        <p>Testing CI/CD, Terraform, Docker, and Kubernetes Skills</p>
+        <h1>🚀 Deployment Test App v2.0</h1>
+        <p>Testing CI/CD, Terraform, Docker, and Kubernetes Skills - Updated via GitHub Actions!</p>
       </header>
 
       <main className="app-main">
