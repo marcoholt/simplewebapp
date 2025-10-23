@@ -57,7 +57,7 @@ jobs:
         ECR_REPOSITORY_BACKEND: simplewebapp-backend
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker buildx build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY_BACKEND:$IMAGE_TAG -f backend/dockerfile . --push
+        docker buildx build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY_BACKEND:$IMAGE_TAG -f backend/dockerfile backend --push
         
     # Frontend CI
     - name: Frontend - Install dependencies
@@ -87,7 +87,7 @@ jobs:
         ECR_REPOSITORY_FRONTEND: simplewebapp-frontend
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker buildx build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG -f frontend/dockerfile . --push
+        docker buildx build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG -f frontend/dockerfile frontend --push
         
     # Update manifests for ArgoCD
     - name: Update Kubernetes manifests with new image tags
