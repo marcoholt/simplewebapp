@@ -58,7 +58,6 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         docker buildx build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY_BACKEND:$IMAGE_TAG ./backend --push
-        docker buildx build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY_BACKEND:latest ./backend --push
         
     # Frontend CI
     - name: Frontend - Install dependencies
@@ -89,7 +88,6 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         docker buildx build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG ./frontend --push
-        docker buildx build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:latest ./frontend --push
         
     # Update manifests for ArgoCD
     - name: Update Kubernetes manifests with new image tags
