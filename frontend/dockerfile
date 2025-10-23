@@ -8,12 +8,8 @@ COPY package.json package-lock.json* ./
 # Install ALL deps (including dev) for building
 RUN npm ci
 
-# Copy public folder first (required for React build)
-COPY public ./public
-
 # Copy the rest of the source
-COPY src ./src
-COPY tsconfig.json ./
+COPY . .
 
 # Build static assets into /app/build
 RUN npm run build
@@ -34,4 +30,3 @@ EXPOSE 80
 
 # Run Nginx in foreground (container PID 1)
 CMD ["nginx", "-g", "daemon off;"]
-
